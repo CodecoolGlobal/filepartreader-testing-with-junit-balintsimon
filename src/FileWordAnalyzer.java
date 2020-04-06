@@ -36,7 +36,8 @@ public class FileWordAnalyzer {
             StringBuilder newWord = new StringBuilder(word.toLowerCase());
             StringBuilder reverse = newWord.reverse();
 
-            if (word.toLowerCase().equals(reverse.toString())) {
+            if (word.toLowerCase().equals(reverse.toString())
+                    && word.length() > 1) {
                 returnList.add(word);
             }
         }

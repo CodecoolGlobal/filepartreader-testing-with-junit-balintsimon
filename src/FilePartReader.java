@@ -37,10 +37,10 @@ public class FilePartReader {
     public String read() {
         String fileData = "";
         try {
-            File file = new File(filePath);
+            File file = new File(this.filePath);
             Scanner myReader = new Scanner(file);
             while (myReader.hasNextLine()) {
-                fileData = myReader.nextLine();
+                fileData += myReader.nextLine() + " ";
             }
             myReader.close();
         } catch (FileNotFoundException e) {
@@ -54,11 +54,13 @@ public class FilePartReader {
         String fileData = "";
         Integer currentLinePosition = 1;
         try {
-            File file = new File(filePath);
+            File file = new File(this.filePath);
             Scanner myReader = new Scanner(file);
             while (myReader.hasNextLine()) {
-                if (currentLinePosition >= fromLine && currentLinePosition <= toLine) {
-                    fileData = myReader.nextLine();
+                if (currentLinePosition >= this.fromLine && currentLinePosition <= this.toLine) {
+                    fileData += myReader.nextLine() + " ";
+                } else {
+                    myReader.nextLine();
                 }
                 currentLinePosition++;
             }
